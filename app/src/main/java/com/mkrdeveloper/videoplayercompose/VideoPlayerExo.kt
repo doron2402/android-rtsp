@@ -22,9 +22,12 @@ fun VideoPlayerExo(
     videoUrl: String
 ) {
     val context = LocalContext.current
-    val player = ExoPlayer.Builder(context).build().apply {
-        setMediaItem(MediaItem.fromUri(videoUrl))
-    }
+//    val player = ExoPlayer.Builder(context).build().apply {
+//        setMediaItem(MediaItem.fromUri(videoUrl))
+//    }
+    var player = ExoPlayer.Builder(context).build()
+    player.setMediaItem(MediaItem.fromUri(videoUrl))
+    player.prepare()
     val playerView = PlayerView(context)
     val playWhenReady by rememberSaveable {
         mutableStateOf(true)
